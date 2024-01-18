@@ -51,6 +51,10 @@ public class Session extends BaseModel {
 	public void setSessionStatus(SessionStatus sessionStatus) {
 		this.sessionStatus = sessionStatus;
 	}
+
+	
+
+	
 	
 	
 	

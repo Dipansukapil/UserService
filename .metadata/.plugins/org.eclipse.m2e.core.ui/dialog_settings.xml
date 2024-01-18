@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="C:\PersonalUse\Development\userService\UserService"/>
+			<item value="C:\Users\Dipansu Kapil\OneDrive\ドキュメント\workspace-spring-tool-suite-4-4.20.0.RELEASE\ecommers"/>
+			<item value="C:\PersonalUse\Development\project_sts"/>
+			<item value="C:\Users\Dipansu Kapil\OneDrive\ドキュメント\workspace-spring-tool-suite-4-4.20.0.RELEASE\UserService"/>
+			<item value="C:\Users\Dipansu Kapil\OneDrive\ドキュメント\workspace-spring-tool-suite-4-4.20.0.RELEASE"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+</section>

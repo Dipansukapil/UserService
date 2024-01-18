@@ -3,7 +3,7 @@ package com.userservice.dtos;
 public class logoutRequestDto {
 	
 	private String token;
-	private String userId;
+	private Long userId;
 	
 	public String getToken() {
 		return token;
@@ -11,10 +11,10 @@ public class logoutRequestDto {
 	public void setToken(String token) {
 		this.token = token;
 	}
-	public String getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 	
