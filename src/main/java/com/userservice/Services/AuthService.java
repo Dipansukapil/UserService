@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -26,10 +27,12 @@ public class AuthService {
 	
 	private UserRepository userRepository;
 	private SessionRepository sessionRepository;
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
-	public AuthService(UserRepository userRepository,SessionRepository sessionRepository) {
+	public AuthService(UserRepository userRepository,SessionRepository sessionRepository,BCryptPasswordEncoder bCryptPasswordEncoder) {
 		this.userRepository = userRepository;
 		this.sessionRepository = sessionRepository;
+		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
 	}
 	
 	public ResponseEntity<UserDto> login(String email, String password){
@@ -42,7 +45,11 @@ public class AuthService {
 		 
 		 User user = userOptional.get();
 		 
-		 if(!user.getPassword().equals(password)) {
+//		 if(!user.getPassword().equals(password)) {
+//			 return null;
+//		 }
+		 
+		 if(!bCryptPasswordEncoder.matches(password, user.getPassword())) {
 			 return null;
 		 }
 		 
@@ -55,6 +62,7 @@ public class AuthService {
 		 sessionRepository.save(session);
 		 
 		 UserDto userDto = new UserDto();
+		 userDto.setEmail(email);
 		 
 		 MultiValueMapAdapter<String, String> headers = new
 				 MultiValueMapAdapter<>(new HashMap<>());
@@ -70,7 +78,8 @@ public class AuthService {
 		
 		User user = new User();
 		user.setEmail(email);
-		user.setPassword(password);
+//		user.setPassword(password);
+		user.setPassword(bCryptPasswordEncoder.encode(password));
 		
 		User savedUser = userRepository.save(user);
 		
