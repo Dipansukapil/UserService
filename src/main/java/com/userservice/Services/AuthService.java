@@ -9,7 +9,6 @@ import java.util.Optional;
 
 import javax.crypto.SecretKey;
 
-import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -90,6 +89,7 @@ public class AuthService {
 				 .compact();
 		 
 		 Session session = new Session();
+		
 		 session.setSessionStatus(SessionStatus.ACTIVE);
 //		 session.setToken(token);
 		 session.setToken(jws);

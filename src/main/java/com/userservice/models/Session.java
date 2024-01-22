@@ -14,6 +14,7 @@ public class Session extends BaseModel {
 	private String token;
 	private Date expiringAt;
 	
+	
 	@ManyToOne
 	private User user;
 	
@@ -51,6 +52,8 @@ public class Session extends BaseModel {
 	public void setSessionStatus(SessionStatus sessionStatus) {
 		this.sessionStatus = sessionStatus;
 	}
+
+	
 
 	
 
