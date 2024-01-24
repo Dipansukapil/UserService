@@ -19,8 +19,11 @@ import org.springframework.util.MultiValueMapAdapter;
 
 
 import com.userservice.models.User;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
 //import com.nimbusds.jose.Header;
 import com.userservice.dtos.UserDto;
+import com.userservice.models.Role;
 import com.userservice.models.Session;
 import com.userservice.models.SessionStatus;
 import com.userservice.repositories.SessionRepository;
@@ -141,9 +144,28 @@ public class AuthService {
 	public SessionStatus validate(String token,Long userId) {
 		Optional<Session> sessionOptional = sessionRepository.findByTokenAndUser_Id(token, userId);
 		
-		if(sessionOptional.isEmpty()) {
-			return null;
-		}
+		  Session session = sessionOptional.get();
+
+	        if (!session.getSessionStatus().equals(SessionStatus.ACTIVE)) {
+	            return SessionStatus.ENDED;
+	        }
+
+	        Date currentTime = new Date();
+	        if (session.getExpiringAt().before(currentTime)) {
+	            return SessionStatus.ENDED;
+	        }
+
+	        //JWT Decoding.
+	        Jws<Claims> jwsClaims = Jwts.parser().build().parseSignedClaims(token);
+
+	        // Map<String, Object> -> Payload object or JSON
+	        String email = (String) jwsClaims.getPayload().get("email");
+	        List<Role> roles = (List<Role>) jwsClaims.getPayload().get("roles");
+	        Date createdAt = (Date) jwsClaims.getPayload().get("createdAt");
+
+//	        if (restrictedEmails.contains(email)) {
+//	            //reject the token
+//	        }
 		
 		return SessionStatus.ACTIVE;
 	}

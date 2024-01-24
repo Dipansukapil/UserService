@@ -83,6 +83,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-oauth2-authorization-server</artifactId>
         </dependency>
+         <dependency>
+         	<groupId>com.ecommers</groupId>
+         	<artifactId>ecommers</artifactId>
+         	<version>0.0.1-SNAPSHOT</version>
+         </dependency>
 	</dependencies>
 
 	<build>
