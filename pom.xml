@@ -56,8 +56,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.13.0</version>
-        </dependency>
+            </dependency>
          <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
@@ -83,11 +82,8 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-oauth2-authorization-server</artifactId>
         </dependency>
-         <dependency>
-         	<groupId>com.ecommers</groupId>
-         	<artifactId>ecommers</artifactId>
-         	<version>0.0.1-SNAPSHOT</version>
-         </dependency>
+        
+         
 	</dependencies>
 
 	<build>
