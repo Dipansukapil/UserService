@@ -33,7 +33,7 @@ public class CustomSpringUserDetailsService implements UserDetailsService {
 		
 		User user = optionalUser.get();
 		
-		return new CustomerUserDetails(user);
+		return new CustomUserDetails(user);
 	}
 
 }
